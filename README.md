@@ -3,7 +3,7 @@
 ## How to check
 1. Front-end pages ->WebContent->HTML
 2. Back-end:
-···
+```
 |--src
 │  │  org.zip
 │  │  
@@ -81,7 +81,7 @@
 │  │      └─util
 │  │              UserUtil.java
 
-···
+```
 ## Notification
 
 1. Not all files are used in our porject, because we create all possible files before the implementation and only implemented some of them.
