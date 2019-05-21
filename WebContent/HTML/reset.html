@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reset Your Password</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap_flatly.css">
+    <link rel="stylesheet" href="validator/dist/css/bootstrapValidator.css"/>
+    <link rel="icon" href="photos/hicon.png">
+
+    <script type="text/javascript" src="lib/jquery-3.3.1.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="validator/dist/js/bootstrapValidator.js"></script>
+    <script src="lib/background.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="col-md-6 col-md-offset-3  text-center" style="margin-top: 50px;background-color: rgba(220,220,220,0.4)">
+
+        <div class="page-header">
+            <h3 class="text-center" style="font-size: 40px;padding:25px">
+                Reset Password
+            </h3>
+            <div class="description">
+                <p>
+                    <i>Please reset your password</i>
+                </p>
+            </div>
+        </div>
+
+        <form id="ResetForm" role="form" action="login.html">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;New &nbsp;Password&nbsp;&nbsp;&nbsp;</span>
+                    <input id="password" name="password" required="required" type="password" class="form-control"
+                           placeholder="Please enter your new password here">
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">Confirm Password</span>
+                    <input id="repassword" name="repassword" required="required" type="password" class="form-control"
+                           placeholder="Please confirm your password again">
+                </div>
+            </div>
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-default">Continue</button>
+            </div>
+            <br>
+
+        </form>
+    </div>
+</div>
+
+
+<div class="backstretch" id="box1"
+     style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 1080px; width: 1920px; z-index: -1; position: fixed;background-image: url(photos/backimg/1.jpg)">
+</div>
+
+<div class="backstretch" id="box2"
+     style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 1080px; width: 1920px; z-index: -2; position: fixed;">
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#ResetForm").bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {/*validate*/
+                password: {
+                    message: 'Invalid',
+                    validators: {
+                        notEmpty: {
+                            message: 'Password cannot be empty!'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 30,
+                            message: 'Password must contain 6~30 characters'
+                        },
+                        identical: {
+                            field: 'password',
+                            message: 'Entered passwords are not identical!'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_\.]+$/,
+                            message: 'The password can only consist of alphabetical, number, dot and underscore'
+                        }
+                    }
+                },
+                repassword: {
+                    message: 'Invalid',
+                    validators: {
+                        notEmpty: {
+                            message: 'Password cannot be empty!'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 30,
+                            message: 'Password must contain 6~30 characters'
+                        },
+                        identical: {
+                            field: 'password',
+                            message: 'Entered values are not identical!'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_\.]+$/,
+                            message: 'The password can only consist of alphabetical, number, dot and underscore'
+                        }
+                    }
+                },
+            }
+        });
+    });
+</script>
+</body>
+</html>
