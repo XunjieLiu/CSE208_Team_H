@@ -1,87 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Heuristic</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="3.37/css/bootstrap.css">
-<link rel="stylesheet" href="validator/dist/css/bootstrapValidator.css" />
+    <meta charset="UTF-8">
+    <title>Welcome to Heuristic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap_flatly.css">
+    <link rel="stylesheet" href="validator/dist/css/bootstrapValidator.css"/>
+    <link rel="icon" href="photos/hicon.png">
 
-<script type="text/javascript" src="jquery.js"></script>
-<script src="3.37/js/bootstrap.js"></script>
-<script type="text/javascript"
-	src="validator/dist/js/bootstrapValidator.js"></script>
-
+    <script type="text/javascript" src="lib/jquery-3.3.1.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="validator/dist/js/bootstrapValidator.js"></script>
+    <script src="lib/background.js"></script>
 </head>
 <body>
-	<div class="container">
-		<div class="col-md-6 col-md-offset-3  text-center"
-			style="margin-top: 50px; background-color: rgba(220, 220, 220, 0.4)">
+<div class="container">
+    <div class="col-md-6 col-md-offset-3  text-center" style="margin-top: 50px;background-color: rgba(220,220,220,0.4)">
+
+        <div class="col-md-12">
+
+            <h1 style="font-size: 45px;padding:25px"><strong>Heuristic</strong></h1>
+            <div class="description">
+                <p>
+                    <i>Designed for academic learning and time efficiency</i>
+                </p>
+            </div>
 
 
-			<div class="col-md-12">
+            <div style="padding: 30px 0px 0px;">
 
-				<h1 style="font-size: 50px; padding: 50px">
-					<strong>Heuristic</strong>
-				</h1>
-				<div class="description">
-					<p>Description...</p>
-				</div>
+                <form class="bs-example bs-example-form text-center" role="form" action="../AccessServlet">
+                    <div class="input-group ">
+                        <span class="input-group-addon">Username</span>
+                        <input required="required" type="text" class="form-control" name="name"
+                               placeholder="Please enter your username">
+                    </div>
+                    <br>
 
+                    <div class="input-group">
+                        <span class="input-group-addon">Password&nbsp;</span>
+                        <input required="required" type="password" class="form-control" name="pwd"
+                               placeholder="Please enter your password">
+                    </div>
+                    <div class="text-right">
+                        <span class="glyphicon glyphicon-question-sign"></span><a class="btn" class="text-center" href="forgot.jsp">Forget password</a>
+                    </div>
+                    
+                    
 
+                    <div class="text-left">
+                        <label class="radio-inline">
+                            <input type="radio" id="inlinecheckbox1" value="0" name="identity" checked> Student
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="inlinecheckbox2" value="1" name="identity"> Teacher
+                        </label>
+                    </div>
+                    <br>
 
-				<div style="padding: 50px 0px 0px;">
-
-					<form class="bs-example bs-example-form text-center" role="form" action="test">
-						<div class="input-group ">
-							<span class="input-group-addon" id="uname">Username</span> <input
-								type="text" class="form-control"
-								placeholder="input your username here">
-						</div>
-						<br>
-						<div class="input-group">
-							<span class="input-group-addon">Password</span> <input
-								required="required" type="password" class="form-control"
-								placeholder="input your password here">
-						</div>
-						
-						<div class="text-center">
-						<button type="submit" class="btn btn-default">Sign in</button>
-					</div>
-					</form>
-
-					<br> <br>
-
-					
-
-					<br>
-
-					<div class="text-right">
-						<span class="glyphicon glyphicon-question-sign"></span><a
-							class="btn" class="text-center" href="forgot.html">Forgot
-							password</a>
-					</div>
-
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-default">Sign in</button>
+                    </div>
+                </form>
+                <br>
 					<div class="text-center">
-						<p>
-							<a class="btn" href="Register.html">Not registered
-								yet.Create a new account now »</a>
-						</p>
-					</div>
+                    <p>
+                        <a class="btn-link" href="register.html">Not registered yet? Create a new account now »</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-				</div>
+<div class="backstretch" id="box1"
+     style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 1080px; width: 1920px; z-index: -1; position: fixed;background-image: url(photos/backimg/1.jpg)">
+</div>
 
-			</div>
-		</div>
-	</div>
-
-	<div class="backstretch"
-		style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 1080px; width: 1920px; z-index: -1; position: fixed;">
-		<img
-			style="position: absolute; margin: 0px; padding: 0px; border: medium none; width: 1519px; height: 1080px; max-height: none; max-width: none; z-index: -1; left: 0px; top: -267.333px;"
-			src="asuka.jpeg">
-	</div>
-
+<div class="backstretch" id="box2"
+     style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 1080px; width: 1920px; z-index: -2; position: fixed;">
+</div>
+<!--<div class="backstretch" id="box1"
+style="z-index: -1; "></div>
+<div class="backstretch" id="box2"
+style="z-index: -1;"></div>-->
 
 
 </body>

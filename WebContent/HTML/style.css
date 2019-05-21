@@ -1,0 +1,32 @@
+.navbar-default input[type="text"] {
+    border: none;
+}
+
+.navbar-default .navbar-form {
+    position: relative;
+}
+
+.navbar-default button[type="submit"] {
+    position: absolute;
+    top: 20%;
+    right: 15px;
+    background: none;
+    border: none;
+}
+
+.profile {
+    margin-right: 25px;
+}
+
+.img-circle {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.breadcrumb {
+    background-color: #fff;
+    opacity:0.6;
+}

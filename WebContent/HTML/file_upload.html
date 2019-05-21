@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap_flatly.css">
+    <link rel="icon" href="photos/hicon.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="lib/jquery-3.3.1.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="lib/file_upload.js"></script>
+    <title>Heuristic | Upload</title>
+
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="temp_nav">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target="#responsive-navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="dashboard.jsp" class="href navbar-brand"><strong>Heuristic</strong></a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="responsive-navbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="dashboard.jsp">Dashboard</a></li>
+                        <li class="dropdown active">
+                            <a href="file_download.jsp" class="dropdown-toggle" data-toggle="dropdown">File<strong
+                                    class="caret"></strong></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="file_upload.html">Upload</a>
+                                </li>
+                                <li>
+                                    <a href="file_download.html">Download</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="calendar.html">Calendar</a></li>
+                    </ul>
+                    <form action="" class="navbar-form navbar-left">
+                        <input type="text" placeholder="Search" class="form-control" id="key">
+                        <button type="submit" id="open">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </form>
+                    <div class="profile navbar-right">
+                        <ul class="nav navbar-nav">
+                            <li><a href="login.html">Log out</a></li>
+                            <li>
+                                <button class="btn btn-primary btn-xs navbar-btn navbar-right"><a href="profile.html">Profile</a>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 10%">
+
+        <div class="page-header">
+            <h1>Upload</h1>
+        </div>
+
+        <p class="lead">Please choose the path that you want to upload</p>
+<form action="../UploadGetModuleServlet">
+
+        <select class="form-control" id="uploadselect" name="uploadselect">
+            <option value="architecture">Architecture</option>
+            <option value="business">Business</option>
+            <option value="engineering">Engineering</option>
+            <option value="science">Science</option>
+            <option value="literature">Literature</option>
+            <option value="other">Other</option>
+        </select>
+        <br>
+
+        <p>Back to the <a href="file_download.jsp">file page</a></p>
+        <br>
+
+        <button class="btn btn-default" type="submit" value="Confirm">Submit</button>
+</form>
+    </div>
+
+</div>
+
+</body>
+</html>

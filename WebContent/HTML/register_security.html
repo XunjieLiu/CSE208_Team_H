@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Heuristic Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap_flatly.css">
+    <link rel="stylesheet" href="validator/dist/css/bootstrapValidator.css"/>
+    <link rel="icon" href="photos/hicon.png">
+
+    <script type="text/javascript" src="lib/jquery-3.3.1.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="validator/dist/js/bootstrapValidator.js"></script>
+    <script src="lib/background.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class=" row clearfix col-md-6 col-md-offset-3  text-center"
+         style="margin-top: 50px;background-color: rgba(220,220,220,0.4)">
+
+        <div class="page-header">
+            <h1 class="text-center" style="font-size: 30px;padding:25px">
+                Create your Heuristic Account
+            </h1>
+            <div class="description">
+                <p>
+                    <i>Set your security questions</i>
+                </p>
+            </div>
+        </div>
+        <form id="questionform" role="form" action="../SetQuestionServlet">
+        Has been modified
+            <div class="col-md-12" style="padding: 0px 10px 50px;">
+                <div class="col-md-6 " class="form-group">
+                    <label>Security question 1</label>
+                    <select class="form-control" name="q1">
+                        <option value = "Q1-1">1</option>
+                        <option value = "Q1-2">2</option>
+                        <option value = "Q1-3">3</option>
+                        <option value = "Q1-4">4</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6 " class="input-group">
+                        <label>Answer </label>
+                        <input type=text class="form-control" placeholder="" name="answer1">
+                    </div>
+                </div>
+                <div class="col-md-6 column col-sm-6" class="form-group">
+                    <label>Security question 2</label>
+                    <select class="form-control" name="q2">
+                        <option value = "Q2-1">1</option>
+                        <option value = "Q2-2">2</option>
+                        <option value = "Q2-3">3</option>
+                        <option value = "Q2-4">4</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6 column" class="input-group">
+                        <label>Answer </label>
+                        <input type=text class="form-control" placeholder="" name="answer2">
+                    </div>
+                </div>
+                <div class="col-md-6 column" class="form-group">
+                    <label>Security question 3</label>
+                    <select class="form-control" name="q3">
+                        <option value = "Q3-1">1</option>
+                        <option value = "Q3-2">2</option>
+                        <option value = "Q3-3">3</option>
+                        <option value = "Q3-4">4</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6 column" class="input-group">
+                        <label>Answer </label>
+                        <input type=text class="form-control" placeholder="" name="answer3">
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" style="padding:10px">
+                <button type="submit" id="btn_create" class="btn btn-default"> Create my Account>></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="backstretch" id="box1"
+     style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 1080px; width: 1920px; z-index: -1; position: fixed;background-image: url(photos/backimg/1.jpg)">
+</div>
+
+<div class="backstretch" id="box2"
+     style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 1080px; width: 1920px; z-index: -2; position: fixed;">
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#questionform").bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {/*validate*/
+                answer1: {
+                    message: 'Invalid',
+                    validators: {
+                        notEmpty: {
+                            message: 'Answer cannot be empty!'
+                        },
+                        stringLength: {
+                            min: 3,
+                            max: 10,
+                            message: 'Answer must contain 3~10 characters'
+                        },
+
+                    }
+                },
+
+                answer2: {
+                    message: 'Invalid',
+                    validators: {
+                        notEmpty: {
+                            message: 'Answer cannot be empty!'
+                        },
+                        stringLength: {
+                            min: 3,
+                            max: 10,
+                            message: 'Answer must contain 3~10 characters'
+                        },
+                    }
+                },
+
+                answer3: {
+                    message: 'Invalid',
+                    validators: {
+                        notEmpty: {
+                            message: 'Answer cannot be empty!'
+                        },
+                        stringLength: {
+                            min: 3,
+                            max: 10,
+                            message: 'Answer must contain 3~10 characters'
+                        },
+                    }
+                },
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

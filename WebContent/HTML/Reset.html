@@ -2,151 +2,120 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reset Password</title>
+    <title>Reset Your Password</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="3.37/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap_flatly.css">
     <link rel="stylesheet" href="validator/dist/css/bootstrapValidator.css"/>
+    <link rel="icon" href="photos/hicon.png">
 
-    <script type="text/javascript" src="jquery.js"></script>
-    <script src="3.37/js/bootstrap.js"></script>
+    <script type="text/javascript" src="lib/jquery-3.3.1.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="validator/dist/js/bootstrapValidator.js"></script>
+    <script src="lib/background.js"></script>
 </head>
 <body>
 <div class="container">
     <div class="col-md-6 col-md-offset-3  text-center" style="margin-top: 50px;background-color: rgba(220,220,220,0.4)">
 
-
-            <div class="page-header">
-                <h3 class="text-center" style="font-size: 50px;padding:50px">
-                    Reset Password
-                </h3>
+        <div class="page-header">
+            <h3 class="text-center" style="font-size: 40px;padding:25px">
+                Reset Password
+            </h3>
+            <div class="description">
+                <p>
+                    <i>Please reset your password</i>
+                </p>
             </div>
-        <form id="ResetForm" role="form">
+        </div>
+
+        <form id="ResetForm" role="form" action="login.html">
             <div class="form-group">
-
-                    <div class="input-group ">
-                        <span class="input-group-addon">Username</span>
-                        <input  name="username" required="required"type="text" class="form-control" placeholder="input your username here">
-                    </div>
+                <div class="input-group">
+                    <span class="input-group-addon">&nbsp;&nbsp;&nbsp;&nbsp;New &nbsp;Password&nbsp;&nbsp;&nbsp;</span>
+                    <input id="password" name="password" required="required" type="password" class="form-control"
+                           placeholder="Please enter your new password here">
+                </div>
             </div>
-
             <br>
             <div class="form-group">
                 <div class="input-group">
-                        <span class="input-group-addon">New Password</span>
-                        <input  id = "password" name="password"required="required" type="password" class="form-control" placeholder="input your new password here">
-                    </div>
+                    <span class="input-group-addon">Confirm Password</span>
+                    <input id="repassword" name="repassword" required="required" type="password" class="form-control"
+                           placeholder="Please confirm your password again">
+                </div>
             </div>
-
-            <div class="form-group">
-                    <br>
-                    <br>
-                    <div class="input-group">
-                        <span class="input-group-addon">Confirm Password</span>
-                        <input input id="repassword" name="repassword" required="required" type="password" class="form-control" placeholder="input your new password again ">
-                    </div>
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-default">Continue</button>
             </div>
-                    <br><br><br>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-default"><a class="btn" href="login.html">Continue</a></button>
-                    </div>
+            <br>
 
-
-</form>
-        </div>
+        </form>
     </div>
+</div>
 
 
+<div class="backstretch" id="box1"
+     style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 1080px; width: 1920px; z-index: -1; position: fixed;background-image: url(photos/backimg/1.jpg)">
+</div>
 
-<div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 1080px; width: 1920px; z-index: -1; position: fixed;">
-    <img style="position: absolute; margin: 0px; padding: 0px; border: medium none; width: 1519px; height: 1080px; max-height: none; max-width: none; z-index: -1; left: 0px; top: -267.333px;" src="wlop.jpg"></div>
+<div class="backstretch" id="box2"
+     style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 1080px; width: 1920px; z-index: -2; position: fixed;">
+</div>
+
 <script type="text/javascript">
-    $(document).ready(function() {
-        /**
-         * 下面是进行插件初始化
-         * 你只需传入相应的键值对
-         * */
-        $('#ResetForm').bootstrapValidator({
+    $(document).ready(function () {
+
+        $("#ResetForm").bootstrapValidator({
             message: 'This value is not valid',
-            feedbackIcons: {/*输入框不同状态，显示图片的样式*/
+            feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
-            fields: {/*验证*/
-                username: {/*键名username和input name值对应*/
-                    message: 'The username is not valid',
-                    validators: {
-                        notEmpty: {/*非空提示*/
-                            message: '用户名不能为空'
-                        },
-                        stringLength: {/*长度提示*/
-                            min: 6,
-                            max: 30,
-                            message: '用户名长度必须在6到30之间'
-                        }/*最后一个没有逗号*/
-                    }
-                },
+            fields: {/*validate*/
                 password: {
-                    message:'密码无效',
+                    message: 'Invalid',
                     validators: {
                         notEmpty: {
-                            message: '密码不能为空'
+                            message: 'Password cannot be empty!'
                         },
                         stringLength: {
                             min: 6,
                             max: 30,
-                            message: '密码长度必须在6到30之间'
+                            message: 'Password must contain 6~30 characters'
                         },
-                        identical: {//相同
-                            field: 'password', //需要进行比较的input name值
-                            message: '两次密码不一致'
-                        },
-                        different: {//不能和用户名相同
-                            field: 'username',//需要进行比较的input name值
-                            message: '不能和用户名相同'
+                        identical: {
+                            field: 'password',
+                            message: 'Entered passwords are not identical!'
                         },
                         regexp: {
                             regexp: /^[a-zA-Z0-9_\.]+$/,
-                            message: 'The username can only consist of alphabetical, number, dot and underscore'
+                            message: 'The password can only consist of alphabetical, number, dot and underscore'
                         }
                     }
                 },
                 repassword: {
-                    message: '密码无效',
+                    message: 'Invalid',
                     validators: {
                         notEmpty: {
-                            message: '密码不能为空'
+                            message: 'Password cannot be empty!'
                         },
                         stringLength: {
                             min: 6,
                             max: 30,
-                            message: '密码长度必须在6到30之间'
+                            message: 'Password must contain 6~30 characters'
                         },
-                        identical: {//相同
+                        identical: {
                             field: 'password',
-                            message: '两次密码不一致'
+                            message: 'Entered values are not identical!'
                         },
-                        different: {//不能和用户名相同
-                            field: 'username',
-                            message: '不能和用户名相同'
-                        },
-                        regexp: {//匹配规则
+                        regexp: {
                             regexp: /^[a-zA-Z0-9_\.]+$/,
-                            message: 'The username can only consist of alphabetical, number, dot and underscore'
+                            message: 'The password can only consist of alphabetical, number, dot and underscore'
                         }
                     }
                 },
-                email: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The email address is required and can\'t be empty'
-                        },
-                        emailAddress: {
-                            message: 'The input is not a valid email address'
-                        }
-                    }
-                }
             }
         });
     });

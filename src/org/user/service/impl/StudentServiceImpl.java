@@ -14,5 +14,16 @@ public class StudentServiceImpl implements IStudentService {
 		// TODO Auto-generated method stub
 		return studentDao.queryByNameAndPassword(student);
 	}
+	
+	public boolean addStudent(Student student) {
+		return studentDao.addStudent(student);
+	}
+
+	@Override
+	public boolean updateAllInfoByName(Student student) {
+		// TODO Auto-generated method stub
+		return studentDao.updateAllInfoByName(student);
+	}
+	
 
 }

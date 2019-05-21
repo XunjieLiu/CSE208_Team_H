@@ -7,7 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.user.dao.impl.StudentDaoImpl;
 import org.user.entity.Student;
 import org.user.entity.Teacher;
 import org.user.service.IStudentService;
@@ -15,12 +17,8 @@ import org.user.service.ITeacherService;
 import org.user.service.impl.StudentServiceImpl;
 import org.user.service.impl.TeacherServiceImpl;
 
-/**
- * Servlet implementation class LoginServlet
- */
 @WebServlet("/AccessServlet")
 public class AccessServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -31,27 +29,25 @@ public class AccessServlet extends HttpServlet {
 
 		String name = request.getParameter("name");
 		String pwd = request.getParameter("pwd");
-		String identity = request.getParameter("identity"); // identityå‰ç«¯ä¼ æ¥é»˜è®¤æ˜¯0ï¼Œé»˜è®¤æ˜¯å­¦ç”Ÿ
+		String identity = request.getParameter("identity"); // identityÇ°¶Ë´«À´Ä¬ÈÏÊÇ0£¬Ä¬ÈÏÊÇÑ§Éú
 
-		if (identity.equals("1")) {
-			// This is a teacher.
-			request.setAttribute("identity", "1");
-			Student student = new Student(name, pwd);
-			IStudentService sservice = new StudentServiceImpl();
-			result = sservice.queryByNameAndPassword(student);
-		} else {
-			// This is a student.
-			Teacher teacher = new Teacher(name, pwd);
-			ITeacherService tservice = new TeacherServiceImpl();
-			result = tservice.queryByNameAndPassword(teacher);
-
-		}
+		request.setAttribute("identity", "0");
+		Student student = new Student(name.trim(), pwd.trim());
+		IStudentService sservice = new StudentServiceImpl();
+			
+		result=  sservice.queryByNameAndPassword(student);
 
 		if (result) {
-			request.getRequestDispatcher("homepage.jsp").forward(request, response);
-			request.setAttribute("status", true);
+			HttpSession session = request.getSession(true);
+			StudentDaoImpl dao = new StudentDaoImpl();
+			Student newStudent = dao.queryAllInfoByStudent(student);
+			session.setAttribute("student", newStudent);
+			response.sendRedirect("/online_learning_platform/HTML/dashboard.jsp");
+//			request.getRequestDispatcher("/HTML/dashboard.html").forward(request, response);
+//			request.setAttribute("status", true);
 		} else {
-			response.sendRedirect("loginFail.jsp");
+			System.out.println(result);
+			response.sendRedirect("/online_learning_platform/HTML/login.html");
 		}
 
 		// request.getRequestDispatcher("studentInfo.jsp").forward(request, response);

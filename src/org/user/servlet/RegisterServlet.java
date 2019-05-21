@@ -14,14 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.user.dao.impl.StudentDaoImpl;
 import org.user.entity.Student;
 
 /**
  * Servlet implementation class RegisterServlet
  */
+@SuppressWarnings("serial")
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
-	private static int id = 0;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -30,37 +31,23 @@ public class RegisterServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
 
-		Map<String, String> securityQ = new HashMap<String, String>();
 		request.setCharacterEncoding("utf-8");
-		String name = request.getParameter("uname");
-		String pwd = request.getParameter("upwd");
-		String email = request.getParameter("uemail");
-		String identity = "0";
-		String grade = request.getParameter("ugrade");
-		String major = request.getParameter("umajor");
-		String securityQ1 = request.getParameter("uquestion1");
-		String securityQ2 = request.getParameter("uquestion2");
-		String securityQ3 = request.getParameter("uquestion3");
-		String answer1 = request.getParameter("uanswer1");
-		String answer2 = request.getParameter("uanswer2");
-		String answer3 = request.getParameter("uanswer3");
-		securityQ.put(securityQ1, answer1);
-		securityQ.put(securityQ2, answer2);
-		securityQ.put(securityQ3, answer3);
-		String university = "XJTLU";
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		int identity = request.getParameter("identity").equals("student")? 0:1;
+		int year = Integer.parseInt(request.getParameter("year"));
+		String pwd = request.getParameter("pwd");
+		String major = request.getParameter("major");
 
-		if (identity.equals("0")) {
-			System.out.println("Identity == 0");
-			Student student = new Student(id++, name, pwd, Integer.parseInt(identity), university,
-					Integer.parseInt(grade), major, email, securityQ);
+		Student student = new Student(name, identity, year, major, email);
+		student.setSpwd(pwd);
 
-			session.setAttribute("user", student);
-			session.setAttribute("sname", student.getSname());
-			
-			request.getRequestDispatcher("TestSession").forward(request, response);
-		} else {
-			System.out.println("Identity != 0");
-		}
+		session.setAttribute("student", student);
+		session.setAttribute("sname", student.getSname());
+		
+		System.out.println(student.toString());
+		
+		response.sendRedirect("/online_learning_platform/HTML/register_security.html");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
